@@ -3,7 +3,7 @@
     "color": "^3.1.2",
     "fetch-retry": "^2.0.0",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "^8.1.0",
+    "next": "^9.3.2",
     "node-fetch": "^2.6.0",
     "react-feather": "^2.0.4",
     "styled-components": "^5.0.1"

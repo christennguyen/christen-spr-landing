@@ -1,11 +1,21 @@
 {
   "dependencies": {
-    "color": "^3.1.1",
+    "color": "^3.1.2",
     "fetch-retry": "^2.0.0",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^8.1.0",
-    "node-fetch": "^2.3.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "node-fetch": "^2.6.0",
+    "react-feather": "^2.0.4",
+    "styled-components": "^5.0.1"
+  },
+  "name": "christen-spr-landing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/christennguyen/christen-spr-landing.git",
+  "author": "Christen <cnguyen@condati.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }

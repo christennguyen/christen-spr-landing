@@ -1,6 +1,6 @@
 import fetch from "isomorphic-unfetch";
 
-const PAGE_ID = "c42c7347-0abb-4bbf-89cb-2aa81713bb0a";
+const PAGE_ID = "788164e8-891a-4ed6-b950-7811bcda4bca";
 
 export default async function getNotionData() {
   const data = await loadPageChunk({ pageId: PAGE_ID });
@@ -30,7 +30,7 @@ export default async function getNotionData() {
       list = null;
       const child = {
         type: "image",
-        src: `/image.js?url=${encodeURIComponent(value.format.display_source)}`
+        src: `/image.js?url=${encodeURIComponent(value.format.display_source)}`,
       };
       section.children.push(child);
     } else if (value.type === "text") {
@@ -38,14 +38,14 @@ export default async function getNotionData() {
       if (value.properties) {
         section.children.push({
           type: "text",
-          value: value.properties.title
+          value: value.properties.title,
         });
       }
     } else if (value.type === "bulleted_list") {
       if (list == null) {
         list = {
           type: "list",
-          children: []
+          children: [],
         };
         section.children.push(list);
       }
@@ -53,11 +53,11 @@ export default async function getNotionData() {
     } else if (value.type === "collection_view") {
       const col = await queryCollection({
         collectionId: value.collection_id,
-        collectionViewId: value.view_ids[0]
+        collectionViewId: value.view_ids[0],
       });
       const table = {};
       const entries = values(col.recordMap.block).filter(
-        block => block.value && block.value.parent_id === value.collection_id
+        (block) => block.value && block.value.parent_id === value.collection_id
       );
       for (const entry of entries) {
         const props = entry.value.properties;
@@ -77,7 +77,7 @@ export default async function getNotionData() {
       } else {
         section.children.push({
           type: "table",
-          value: table
+          value: table,
         });
       }
     } else {
@@ -93,9 +93,9 @@ async function rpc(fnName, body = {}) {
   const res = await fetch(`https://www.notion.so/api/v3/${fnName}`, {
     method: "POST",
     headers: {
-      "content-type": "application/json"
+      "content-type": "application/json",
     },
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   });
 
   if (res.ok) {
@@ -127,14 +127,14 @@ function queryCollection({
   collectionId,
   collectionViewId,
   loader = {},
-  query = {}
+  query = {},
 }) {
   const {
     limit = 70,
     loadContentCover = true,
     type = "table",
     userLocale = "en",
-    userTimeZone = "America/Los_Angeles"
+    userTimeZone = "America/Los_Angeles",
   } = loader;
 
   const {
@@ -144,12 +144,12 @@ function queryCollection({
         id: "count",
         property: "title",
         type: "title",
-        view_type: "table"
-      }
+        view_type: "table",
+      },
     ],
     filter = [],
     filter_operator = "and",
-    sort = []
+    sort = [],
   } = query;
 
   return rpc("queryCollection", {
@@ -160,14 +160,14 @@ function queryCollection({
       loadContentCover,
       type,
       userLocale,
-      userTimeZone
+      userTimeZone,
     },
     query: {
       aggregate,
       filter,
       filter_operator,
-      sort
-    }
+      sort,
+    },
   });
 }
 
@@ -176,14 +176,14 @@ function loadPageChunk({
   limit = 100,
   cursor = { stack: [] },
   chunkNumber = 0,
-  verticalColumns = false
+  verticalColumns = false,
 }) {
   return rpc("loadPageChunk", {
     pageId,
     limit,
     cursor,
     chunkNumber,
-    verticalColumns
+    verticalColumns,
   });
 }
 

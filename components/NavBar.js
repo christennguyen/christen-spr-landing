@@ -12,8 +12,22 @@ const Logo = styled.img`
 `;
 const NavLink = styled.a`
   margin-right: 37px;
-  color: olive;
+  color: #43a2a2;
   text-decoration: none;
+  border-bottom: 1px solid #43a2a2;
+
+  &:visited: {
+    color: #43a2a2;
+  }
+
+  &:hover {
+    border-bottom: none;
+    background-image: url("/static/images/squiggle-animated.svg");
+    background-position: 0 calc(100% - 1.5px);
+    background-size: auto 3px;
+    background-repeat: repeat-x;
+    padding-bottom: 3px;
+  }
 `;
 
 const NavContainer = styled.nav`
@@ -26,12 +40,7 @@ const NavBar = () => {
     <Flex>
       <Logo src={"/static/images/logo.png"} height={90} />
       <NavContainer>
-        <span
-          style={{ color: "olive", marginRight: "37px" }}
-          onClick={scrollToBottom}
-        >
-          about
-        </span>
+        <NavLink onClick={scrollToBottom}>about</NavLink>
         <NavLink href={""}>cv</NavLink>
         <NavLink href={"mailto:christen.nguyen@gmail.com"}>email</NavLink>
       </NavContainer>

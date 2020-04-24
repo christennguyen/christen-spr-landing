@@ -61,3 +61,19 @@ p {
   bottom: -60px;
   height: 125px;
 }
+
+.a-link,
+.a-link:visited {
+  color: #43a2a2;
+  text-decoration: none;
+  border-bottom: 1px solid #43a2a2;
+}
+
+.a-link:hover {
+  border-bottom: none;
+  background-image: url("/static/images/squiggle-animated.svg");
+  background-position: 0 calc(100% - 1.5px);
+  background-size: auto 3px;
+  background-repeat: repeat-x;
+  padding-bottom: 3px;
+}

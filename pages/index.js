@@ -17,7 +17,7 @@ const Squiggle = styled.div`
   position: absolute;
   left: -81px;
   top: 530px;
-  background-image: url("/static/images/squiggle.svg");
+  background-image: url("/static/images/squiggle-animated.svg");
   height: 5px;
   width: 19rem;
   transform: rotate(90deg);
@@ -101,7 +101,7 @@ export default function Page({ sections, etag, meta }) {
         <div className="button-scroll_down bounce">
           <IconButton
             icon={"ChevronsDown"}
-            color={"olive"}
+            color={"#43a2a2"}
             size={40}
             onClick={scrollToBottom}
           />
@@ -115,7 +115,7 @@ export default function Page({ sections, etag, meta }) {
         </SecondaryTextContainer>
         <IconButton
           icon={"ChevronsUp"}
-          color={"olive"}
+          color={"#43a2a2"}
           size={40}
           style={{ position: "absolute", bottom: "55px", right: "10px" }}
           onClick={scrollToTop}

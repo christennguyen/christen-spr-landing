@@ -2,7 +2,7 @@ import React from "react";
 import IconLink from "./IconLink";
 import styled from "styled-components";
 
-const ICON_COLOR = "olive";
+const ICON_COLOR = "#43a2a2";
 const ICON_SIZE = 20;
 const URL_GITHUB = "https://github.com/christennguyen";
 const URL_LINKEDIN = "https://www.linkedin.com/in/christennguyen/";

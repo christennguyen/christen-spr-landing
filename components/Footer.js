@@ -26,10 +26,7 @@ const Footer = () => {
         <p className="p-footer" style={{ margin: "5px 0 0 20px" }}>
           &copy; 2020 All Rights Reserved | Site Created by Christen Nguyen /
           Designed by {"                            "}
-          <a
-            href="http://www.vivelavivitron.com/"
-            style={{ textDecoration: "none" }}
-          >
+          <a className="a-link" href="http://www.vivelavivitron.com/">
             Vivian Johnston
           </a>
         </p>

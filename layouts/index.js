@@ -11,7 +11,9 @@ function Layout({ children }) {
         <link href="/static/main.css" rel="stylesheet" />
       </Head>
 
-      <div id="wrapper">{children}</div>
+      <div id="wrapper" style={{ position: "relative" }}>
+        {children}
+      </div>
     </>
   );
 }

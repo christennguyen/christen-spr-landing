@@ -3,8 +3,10 @@ import getNotionData from "../data/notion";
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import styled from "styled-components";
-import SocialLinks from "../components/SocialLinks";
-import { X, Circle } from "react-feather";
+import Footer from "../components/Footer";
+import IconButton from "../components/IconButton";
+import NavBar from "../components/NavBar";
+import { scrollToBottom, scrollToTop } from "../static/js/utilities";
 
 const Flex = styled.div`
   display: flex;
@@ -12,12 +14,45 @@ const Flex = styled.div`
 `;
 
 const Squiggle = styled.div`
-  background-image: url("/static/images/squiggle-animated.svg");
+  position: absolute;
+  left: -81px;
+  top: 530px;
+  background-image: url("/static/images/squiggle.svg");
   height: 5px;
-  width: 50%;
-  color: olive;
-  margin: 0 auto;
+  width: 19rem;
+  transform: rotate(90deg);
 `;
+
+const Blob = styled.img`
+  position: absolute;
+  top: 82vh;
+  left: 170px;
+  z-index: 1;
+`;
+
+const MainSection = styled.div`
+  height: 100vh;
+`;
+
+const MainTextContainer = styled.div`
+  margin: 10rem;
+  padding: 10px;
+`;
+const SecondSection = styled.section`
+  height: 100vh;
+  background-color: #fae0a8;
+  position: relative;
+`;
+
+const SecondaryTextContainer = styled.div`
+  position: absolute;
+  top: 100px;
+  left: 75px;
+  padding: 65px;
+  background-color: #ffffff;
+  width: 60%;
+`;
+
 export default function Page({ sections, etag, meta }) {
   const focused = useFocus();
   useEffect(() => {
@@ -35,35 +70,55 @@ export default function Page({ sections, etag, meta }) {
   }, [focused]);
 
   const sectionIntro = sections[1];
-
+  const sectionSecondary = sections[2];
   return (
     <Layout>
+      <Squiggle />
+      <Blob />
       <Head>
         {meta.title && <title>{meta.title[0][0]}</title>}
         {meta.description && (
           <meta name="description" content={meta.description[0][0]} />
         )}
       </Head>
-      <Circle size={10} />
-      <section>
-        <h1>{sectionIntro.title[0]}</h1>
-        <Flex>
-          <div>
-            <p>{sectionIntro.children[0].value[0]}</p>{" "}
-            <div style={{ marginTop: "15px" }}>
-              <SocialLinks />
+      <MainSection>
+        <header>
+          <NavBar />
+        </header>
+        <MainTextContainer>
+          <Flex style={{ justifyContent: "center" }}>
+            <div style={{ marginRight: "3rem" }}>
+              <h1>{sectionIntro.title[0]}</h1>
+              <p className="p-main-text">{sectionIntro.children[0].value[0]}</p>
             </div>
-          </div>
+            <img src={sectionIntro.children[2].src} height={225} />
+          </Flex>
+        </MainTextContainer>
+        <div className="button-scroll_down bounce">
+          <IconButton
+            icon={"ChevronsDown"}
+            color={"olive"}
+            size={40}
+            onClick={scrollToBottom}
+          />
+        </div>
+        <Blob src={"static/images/boho-circle.svg"} height={225} />
+      </MainSection>
+      <SecondSection>
+        <SecondaryTextContainer>
+          <h1>{sectionSecondary.title[0]}</h1>
+          <p>{sectionSecondary.children[0].value[0]}</p>
+        </SecondaryTextContainer>
+        <IconButton
+          icon={"ChevronsUp"}
+          color={"olive"}
+          size={40}
+          style={{ position: "absolute", bottom: "55px", right: "10px" }}
+          onClick={scrollToTop}
+        />
+      </SecondSection>
 
-          <img src={sectionIntro.children[2].src} height={100} />
-        </Flex>
-      </section>
-      <Squiggle />
-      <X size={10} />
-      <footer>
-        Built by Christen with Notion + Next.js + Zeit; Designed by Vivian
-        Johnston
-      </footer>
+      <Footer />
     </Layout>
   );
 }

@@ -1,32 +1,56 @@
 @import url("https://fonts.googleapis.com/css?family=Yeseva+One|Red+Hat+Display&display=swap");
 
 body {
-  background-color: lightcyan;
+  background-color: #e8f6f7;
   font-family: "Red Hat Display", sans-serif;
+  margin: 0px;
 }
+
 header,
 h1,
 h2 {
   font-family: "Yeseva One", cursive;
 }
 
-section {
-  margin: 100px;
-  color: olive;
-  padding: 10px;
-}
-
 img {
   border-radius: 5px;
 }
 
-footer {
-  background-color: olive;
-  color: lavenderblush;
-  padding: 10px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
+h1 {
+  font-size: 35px;
+}
+
+p {
+  font-size: 15px;
+}
+
+.p-footer {
+  font-size: 12px;
+}
+
+@keyframes bounceStyle {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+.bounce {
+  animation: bounceStyle 2s infinite;
+}
+
+.button-scroll_down {
+  position: absolute;
+  top: 84vh;
+  left: 50vw;
+  z-index: 3;
 }

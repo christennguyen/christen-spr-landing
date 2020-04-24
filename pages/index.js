@@ -37,6 +37,7 @@ const MainSection = styled.div`
 const MainTextContainer = styled.div`
   margin: 10rem;
   padding: 10px;
+  margin-top: 6rem;
 `;
 const SecondSection = styled.section`
   height: 100vh;
@@ -91,7 +92,10 @@ export default function Page({ sections, etag, meta }) {
               <h1>{sectionIntro.title[0]}</h1>
               <p className="p-main-text">{sectionIntro.children[0].value[0]}</p>
             </div>
-            <img src={sectionIntro.children[2].src} height={225} />
+            <div style={{ position: "relative" }}>
+              <img src={sectionIntro.children[2].src} height={285} />
+              <img className="orangles" src={"/static/images/orangles.svg"} />
+            </div>
           </Flex>
         </MainTextContainer>
         <div className="button-scroll_down bounce">

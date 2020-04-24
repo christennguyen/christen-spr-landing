@@ -17,7 +17,7 @@ const NavLink = styled.a`
 `;
 
 const NavContainer = styled.nav`
-  margin-top: 10px;
+  margin-top: 30px;
   margin-left: auto;
 `;
 

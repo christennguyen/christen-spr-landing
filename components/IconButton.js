@@ -12,13 +12,14 @@ const IconContainer = styled.a`
   }
 `;
 
-const IconLink = ({ icon, color, style, href, size }) => {
+const IconButton = ({ icon, color, style, onClick, size }) => {
   const FeatherIcon = Icon[icon];
+
   return (
-    <IconContainer href={href}>
-      <FeatherIcon color={color} style={style} size={size} />
+    <IconContainer>
+      <FeatherIcon color={color} style={style} size={size} onClick={onClick} />
     </IconContainer>
   );
 };
 
-export default IconLink;
+export default IconButton;
